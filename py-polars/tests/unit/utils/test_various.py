@@ -53,21 +53,21 @@ class TestNormalizeFilepath:
         assert normalized == str(Path.home() / "dummy" / "file.py")
 
     def test_normalize_filepath_custom_pathlike(self) -> None:
-        class CustomPathLike:
+        class CustomPathLikeAbsolute:
             def __fspath__(self) -> bytes:
-                return b"/dummy/file.py"
+                return bytes(Path("/dummy/file.py"))
 
-        path = CustomPathLike()
+        path = CustomPathLikeAbsolute()
         normalized = normalize_filepath(path)
         assert type(normalized) is bytes
         assert normalized == b"/dummy/file.py"
 
     def test_normalize_filepath_custom_pathlike_normalizes(self) -> None:
-        class CustomPathLike:
+        class CustomPathLikeUserHome:
             def __fspath__(self) -> bytes:
-                return b"~/dummy/file.py"
+                return bytes(Path("~/dummy/file.py"))
 
-        path = CustomPathLike()
+        path = CustomPathLikeUserHome()
         normalized = normalize_filepath(path)
         print()
         print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
