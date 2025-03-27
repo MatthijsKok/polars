@@ -93,7 +93,7 @@ jobs:
         if: github.ref_name != 'main'
         env:
           POLARS_TIMEOUT_MS: 60000
-        run: pytest -n auto -m "not release and not benchmark and not docs"
+        run: pytest -n auto -m "not release and not benchmark and not docs" -s
 
       - name: Run tests with new streaming engine
         if: github.ref_name != 'main'

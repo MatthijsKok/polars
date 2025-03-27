@@ -69,6 +69,12 @@ class TestNormalizeFilepath:
 
         path = CustomPathLike()
         normalized = normalize_filepath(path)
+        print()
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        print(normalized)
+        print(type(normalized))
+        print(Path.home() / "dummy" / "file.py")
+        print(bytes(Path.home() / "dummy" / "file.py"))
         assert type(normalized) is bytes
         assert normalized != b"~/dummy/file.py"
         assert normalized == bytes(Path.home() / "dummy" / "file.py")
