@@ -64,8 +64,12 @@ class TestNormalizeFilepath:
         print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         print(normalized)
         print(type(normalized))
+        print(path)
+        print(expected_path)
+        print(expected_type)
         print(Path.home() / "dummy" / "file.py")
         print(bytes(Path.home() / "dummy" / "file.py"))
+        print()
         assert normalized == expected_path
         assert type(normalized) is expected_type
         assert "~" not in str(normalized)
